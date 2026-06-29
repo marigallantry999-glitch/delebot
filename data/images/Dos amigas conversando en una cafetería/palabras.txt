@@ -1,0 +1,15 @@
+la cafetería : кафе
+la taza : чашка
+el plato : тарелка
+la cucharilla : ложечка
+el café : кофе
+la vela : свеча
+la camisa : рубашка
+la diadema : ободок
+el cabello : волосы
+la ventana : окно
+sonreír : улыбаться
+conversar : разговаривать
+amistoso : дружелюбный
+disfrutar del momento : наслаждаться моментом
+la relación de amistad : дружеские отношения

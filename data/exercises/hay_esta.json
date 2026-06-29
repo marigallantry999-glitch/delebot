@@ -1,0 +1,47 @@
+[
+  {
+    "type": "translation",
+    "question": "В парке есть дети.",
+    "answer": "Hay niños en el parque."
+  },
+  {
+    "type": "translation",
+    "question": "Мой друг в кафе.",
+    "answer": "Mi amigo está en el café."
+  },
+  {
+    "type": "translation",
+    "question": "На столе есть яблоко.",
+    "answer": "Hay una manzana en la mesa."
+  },
+  {
+    "type": "fill_in",
+    "question": "_______ tres gatos en el jardín.",
+    "answer": "Hay"
+  },
+  {
+    "type": "fill_in",
+    "question": "El libro _______ en la mochila.",
+    "answer": "está"
+  },
+  {
+    "type": "fill_in",
+    "question": "_______ mucha gente en la fiesta.",
+    "answer": "Hay"
+  },
+  {
+    "type": "correct",
+    "question": "Está dos sillas en la cocina.",
+    "answer": "Hay dos sillas en la cocina."
+  },
+  {
+    "type": "correct",
+    "question": "Hay mi hermana en la habitación.",
+    "answer": "Mi hermana está en la habitación."
+  },
+  {
+    "type": "correct",
+    "question": "¿Hay tu teléfono aquí?",
+    "answer": "¿Está tu teléfono aquí?"
+  }
+]

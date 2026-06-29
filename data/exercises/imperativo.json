@@ -1,0 +1,47 @@
+[
+  {
+    "type": "translation",
+    "question": "¡Habla más despacio!",
+    "answer": "¡Habla más despacio!"
+  },
+  {
+    "type": "translation",
+    "question": "¡Escribe tu nombre!",
+    "answer": "¡Escribe tu nombre!"
+  },
+  {
+    "type": "translation",
+    "question": "¡No corras en la casa!",
+    "answer": "¡No corras en la casa!"
+  },
+  {
+    "type": "fill_in",
+    "question": "_______ (cerrar) la puerta, por favor.",
+    "answer": "Cierra"
+  },
+  {
+    "type": "fill_in",
+    "question": "_______ (venir) a mi fiesta.",
+    "answer": "Ven"
+  },
+  {
+    "type": "fill_in",
+    "question": "No _______ (tocar) eso.",
+    "answer": "toques"
+  },
+  {
+    "type": "correct",
+    "question": "¡Haces la tarea!",
+    "answer": "¡Haz la tarea!"
+  },
+  {
+    "type": "correct",
+    "question": "¡Dices la verdad!",
+    "answer": "¡Di la verdad!"
+  },
+  {
+    "type": "correct",
+    "question": "¡Pones el libro aquí!",
+    "answer": "¡Pon el libro aquí!"
+  }
+]

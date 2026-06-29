@@ -1,0 +1,47 @@
+[
+  {
+    "type": "translation",
+    "question": "Мой лучший друг.",
+    "answer": "Mi mejor amigo."
+  },
+  {
+    "type": "translation",
+    "question": "Las chicas son inteligentes.",
+    "answer": "Las chicas son inteligentes."
+  },
+  {
+    "type": "translation",
+    "question": "El perro es negro.",
+    "answer": "El perro es negro."
+  },
+  {
+    "type": "fill_in",
+    "question": "Los gatos son _______ (rápido).",
+    "answer": "rápidos"
+  },
+  {
+    "type": "fill_in",
+    "question": "Mi hermana es _______ (alto).",
+    "answer": "alta"
+  },
+  {
+    "type": "fill_in",
+    "question": "Las casas son _______ (blanco).",
+    "answer": "blancas"
+  },
+  {
+    "type": "correct",
+    "question": "La casa es grande.",
+    "answer": "La casa es grande."
+  },
+  {
+    "type": "correct",
+    "question": "Los niños son feliz.",
+    "answer": "Los niños son felices."
+  },
+  {
+    "type": "correct",
+    "question": "Mis amigas son simpático.",
+    "answer": "Mis amigas son simpáticas."
+  }
+]

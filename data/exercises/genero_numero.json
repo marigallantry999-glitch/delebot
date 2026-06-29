@@ -1,0 +1,47 @@
+[
+  {
+    "type": "translation",
+    "question": "Столы большие.",
+    "answer": "Las mesas son grandes."
+  },
+  {
+    "type": "translation",
+    "question": "Дом красивый.",
+    "answer": "La casa es bonita."
+  },
+  {
+    "type": "translation",
+    "question": "Книги интересные.",
+    "answer": "Los libros son interesantes."
+  },
+  {
+    "type": "fill_in",
+    "question": "_______ (el/la) problema es difícil.",
+    "answer": "El"
+  },
+  {
+    "type": "fill_in",
+    "question": "_______ (un/una) día soleado.",
+    "answer": "Un"
+  },
+  {
+    "type": "fill_in",
+    "question": "_______ (los/las) flores son rojas.",
+    "answer": "Las"
+  },
+  {
+    "type": "correct",
+    "question": "El mano está lastimado.",
+    "answer": "La mano está lastimada."
+  },
+  {
+    "type": "correct",
+    "question": "Unas perros son grandes.",
+    "answer": "Unos perros son grandes."
+  },
+  {
+    "type": "correct",
+    "question": "La problema es grave.",
+    "answer": "El problema es grave."
+  }
+]

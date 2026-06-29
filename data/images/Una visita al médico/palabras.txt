@@ -1,0 +1,15 @@
+el médico : врач
+la médica : врач (жен.)
+la consulta : кабинет
+la bata : халат
+el fonendoscopio : стетоскоп
+el brazo : рука
+el vendaje : повязка
+el escritorio : письменный стол
+la carpeta : папка
+el bolígrafo : ручка
+examinar : осматривать
+escribir : писать
+preocupado : обеспокоенный
+los consejos médicos : медицинские советы
+recuperarse rápido : быстро восстанавливаться

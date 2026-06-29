@@ -1,0 +1,15 @@
+el supermercado : супермаркет
+la cajera : кассирша
+el carrito : тележка
+la tarjeta : карта
+el datáfono : терминал
+la cinta : лента
+la caja registradora : кассовый аппарат
+el monitor : монитор
+el estante : полка
+el producto : продукт
+pagar con tarjeta: платить картой
+comprar : покупать
+amable : доброжелательный
+el importe total : общая сумма
+la bufanda gris : серый шарф

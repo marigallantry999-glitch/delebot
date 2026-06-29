@@ -1,0 +1,47 @@
+[
+  {
+    "type": "translation",
+    "question": "Voy a la escuela.",
+    "answer": "Voy a la escuela."
+  },
+  {
+    "type": "translation",
+    "question": "El regalo es para María.",
+    "answer": "El regalo es para María."
+  },
+  {
+    "type": "translation",
+    "question": "El libro está sobre la mesa.",
+    "answer": "El libro está sobre la mesa."
+  },
+  {
+    "type": "fill_in",
+    "question": "Salgo _______ mi casa _______ las ocho.",
+    "answer": "de, a"
+  },
+  {
+    "type": "fill_in",
+    "question": "Este regalo es _______ ti.",
+    "answer": "para"
+  },
+  {
+    "type": "fill_in",
+    "question": "Vivo _______ una ciudad pequeña.",
+    "answer": "en"
+  },
+  {
+    "type": "correct",
+    "question": "Voy por el cine.",
+    "answer": "Voy al cine."
+  },
+  {
+    "type": "correct",
+    "question": "El lápiz es de Juan.",
+    "answer": "El lápiz es de Juan."
+  },
+  {
+    "type": "correct",
+    "question": "Camino para la tienda.",
+    "answer": "Camino a la tienda."
+  }
+]

@@ -1,0 +1,16 @@
+la montaña : гора
+la mochila : рюкзак
+el sendero : тропа
+la roca : скала
+la niebla : туман
+el valle : долина
+el horizonte : горизонт
+la hierba : трава
+el bosque : лес
+la cumbre : вершина
+caminar : идти
+explorar : исследовать
+soleado : солнечный
+la luz del amanecer : свет рассвета
+hacer senderismo : ходить в поход
+

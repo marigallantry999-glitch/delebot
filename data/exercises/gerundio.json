@@ -1,0 +1,47 @@
+[
+  {
+    "type": "translation",
+    "question": "Я читаю книгу.",
+    "answer": "Estoy leyendo un libro."
+  },
+  {
+    "type": "translation",
+    "question": "Они обедают сейчас.",
+    "answer": "Ellos están almorzando ahora."
+  },
+  {
+    "type": "translation",
+    "question": "Мы учим испанский.",
+    "answer": "Estamos aprendiendo español."
+  },
+  {
+    "type": "fill_in",
+    "question": "Mi madre _______ (cocinar) la cena.",
+    "answer": "está cocinando"
+  },
+  {
+    "type": "fill_in",
+    "question": "Los niños _______ (jugar) en el parque.",
+    "answer": "están jugando"
+  },
+  {
+    "type": "fill_in",
+    "question": "Yo _______ (escribir) una carta.",
+    "answer": "estoy escribiendo"
+  },
+  {
+    "type": "correct",
+    "question": "Él está leyendo y comiendo.",
+    "answer": "Él está leyendo y comiendo."
+  },
+  {
+    "type": "correct",
+    "question": "Nosotros estamos bebiendo agua.",
+    "answer": "Nosotros estamos bebiendo agua."
+  },
+  {
+    "type": "correct",
+    "question": "Ellos están durmiendo.",
+    "answer": "Ellos están durmiendo."
+  }
+]

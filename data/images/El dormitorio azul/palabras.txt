@@ -1,0 +1,15 @@
+el dormitorio : спальня
+la cama : кровать
+la cabecera : изголовье
+el edredón : стеганое одеяло
+la almohada : подушка
+la mesilla : тумбочка
+el cajón : ящик
+la jarra : кувшин
+la toalla : полотенце
+el perchero : вешалка
+la ventana : окно
+la pared : стена
+ordenado : аккуратный
+descansar : отдыхать
+recuperar energía : восстанавливать силы

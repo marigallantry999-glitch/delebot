@@ -1,0 +1,47 @@
+[
+  {
+    "type": "translation",
+    "question": "Voy a viajar mañana.",
+    "answer": "Voy a viajar mañana."
+  },
+  {
+    "type": "translation",
+    "question": "Tienes que estudiar.",
+    "answer": "Tienes que estudiar."
+  },
+  {
+    "type": "translation",
+    "question": "Hay que pagar la cuenta.",
+    "answer": "Hay que pagar la cuenta."
+  },
+  {
+    "type": "fill_in",
+    "question": "Nosotros _______ (tener que) trabajar hoy.",
+    "answer": "tenemos que"
+  },
+  {
+    "type": "fill_in",
+    "question": "Ellos _______ (querer) comer pizza.",
+    "answer": "quieren"
+  },
+  {
+    "type": "fill_in",
+    "question": "_______ (hay que / tener que) limpiar la casa.",
+    "answer": "Hay que"
+  },
+  {
+    "type": "correct",
+    "question": "Él va ir al médico.",
+    "answer": "Él va a ir al médico."
+  },
+  {
+    "type": "correct",
+    "question": "Puedo ayudar te.",
+    "answer": "Puedo ayudarte."
+  },
+  {
+    "type": "correct",
+    "question": "Hay que hacer ejercicio.",
+    "answer": "Hay que hacer ejercicio."
+  }
+]

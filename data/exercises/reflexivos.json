@@ -1,0 +1,47 @@
+[
+  {
+    "type": "translation",
+    "question": "Yo me levanto temprano.",
+    "answer": "Yo me levanto temprano."
+  },
+  {
+    "type": "translation",
+    "question": "Ella se viste rápido.",
+    "answer": "Ella se viste rápido."
+  },
+  {
+    "type": "translation",
+    "question": "Nosotros nos bañamos.",
+    "answer": "Nosotros nos bañamos."
+  },
+  {
+    "type": "fill_in",
+    "question": "Tú _______ (acostarse) tarde.",
+    "answer": "te acuestas"
+  },
+  {
+    "type": "fill_in",
+    "question": "Él _______ (despertarse) a las ocho.",
+    "answer": "se despierta"
+  },
+  {
+    "type": "fill_in",
+    "question": "Yo _______ (divertirse) mucho.",
+    "answer": "me divierto"
+  },
+  {
+    "type": "correct",
+    "question": "Ellos se lavan los manos.",
+    "answer": "Ellos se lavan las manos."
+  },
+  {
+    "type": "correct",
+    "question": "Yo me acuesto a las diez.",
+    "answer": "Yo me acuesto a las diez."
+  },
+  {
+    "type": "correct",
+    "question": "Ella despierta a las siete.",
+    "answer": "Ella se despierta a las siete."
+  }
+]

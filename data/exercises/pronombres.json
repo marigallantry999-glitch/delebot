@@ -1,0 +1,47 @@
+[
+  {
+    "type": "translation",
+    "question": "Ella me llama.",
+    "answer": "Ella me llama."
+  },
+  {
+    "type": "translation",
+    "question": "Te compro un regalo.",
+    "answer": "Te compro un regalo."
+  },
+  {
+    "type": "translation",
+    "question": "Lo veo en la calle.",
+    "answer": "Lo veo en la calle."
+  },
+  {
+    "type": "fill_in",
+    "question": "Juan _______ (me/te/lo) da el libro.",
+    "answer": "me"
+  },
+  {
+    "type": "fill_in",
+    "question": "_______ (nos/os/los) escucha el profesor.",
+    "answer": "nos"
+  },
+  {
+    "type": "fill_in",
+    "question": "La carta, _______ (la/lo/las) escribo yo.",
+    "answer": "la"
+  },
+  {
+    "type": "correct",
+    "question": "Yo te veo a ti.",
+    "answer": "Yo te veo a ti."
+  },
+  {
+    "type": "correct",
+    "question": "Ella lo llama a él.",
+    "answer": "Ella lo llama a él."
+  },
+  {
+    "type": "correct",
+    "question": "Nosotros los compramos las flores.",
+    "answer": "Nosotros las compramos."
+  }
+]

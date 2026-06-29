@@ -1,0 +1,15 @@
+la aspiradora : пылесос
+el suelo : пол
+la habitación : комната
+el cable : провод
+los calcetines : носки
+los vaqueros : джинсы
+la alfombra : ковёр
+la planta : растение
+la maceta : горшок
+el espejo : зеркало
+limpiar : убирать
+aspirar : пылесосить
+luminoso : светлый
+las tareas del hogar : домашние дела
+hacer la limpieza : делать уборку

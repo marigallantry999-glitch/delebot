@@ -1,0 +1,47 @@
+[
+  {
+    "type": "translation",
+    "question": "Ayer fui al mercado.",
+    "answer": "Ayer fui al mercado."
+  },
+  {
+    "type": "translation",
+    "question": "Ellos comieron pizza.",
+    "answer": "Ellos comieron pizza."
+  },
+  {
+    "type": "translation",
+    "question": "Ella llegó tarde.",
+    "answer": "Ella llegó tarde."
+  },
+  {
+    "type": "fill_in",
+    "question": "Yo _______ (hablar) con mi jefe.",
+    "answer": "hablé"
+  },
+  {
+    "type": "fill_in",
+    "question": "Tú _______ (comer) pollo.",
+    "answer": "comiste"
+  },
+  {
+    "type": "fill_in",
+    "question": "Él _______ (vivir) en Madrid.",
+    "answer": "vivió"
+  },
+  {
+    "type": "correct",
+    "question": "Ella estudiaba toda la noche.",
+    "answer": "Ella estudió toda la noche."
+  },
+  {
+    "type": "correct",
+    "question": "Nosotros fuimos al cine ayer.",
+    "answer": "Nosotros fuimos al cine ayer."
+  },
+  {
+    "type": "correct",
+    "question": "Ellos abrieron la ventana.",
+    "answer": "Ellos abrieron la ventana."
+  }
+]

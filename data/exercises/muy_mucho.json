@@ -1,0 +1,47 @@
+[
+  {
+    "type": "translation",
+    "question": "La sopa está muy caliente.",
+    "answer": "La sopa está muy caliente."
+  },
+  {
+    "type": "translation",
+    "question": "Tengo mucho dinero.",
+    "answer": "Tengo mucho dinero."
+  },
+  {
+    "type": "translation",
+    "question": "Hay mucha gente aquí.",
+    "answer": "Hay mucha gente aquí."
+  },
+  {
+    "type": "fill_in",
+    "question": "Estoy _______ cansado.",
+    "answer": "muy"
+  },
+  {
+    "type": "fill_in",
+    "question": "Bebo _______ agua.",
+    "answer": "mucha"
+  },
+  {
+    "type": "fill_in",
+    "question": "Ellos comen _______ pan.",
+    "answer": "mucho"
+  },
+  {
+    "type": "correct",
+    "question": "Ella es mucho inteligente.",
+    "answer": "Ella es muy inteligente."
+  },
+  {
+    "type": "correct",
+    "question": "Hay muy personas en la fiesta.",
+    "answer": "Hay muchas personas en la fiesta."
+  },
+  {
+    "type": "correct",
+    "question": "Tengo muy hambre.",
+    "answer": "Tengo mucha hambre."
+  }
+]

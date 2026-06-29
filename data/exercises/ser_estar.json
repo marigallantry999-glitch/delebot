@@ -1,0 +1,47 @@
+[
+  {
+    "type": "translation",
+    "question": "Она врач.",
+    "answer": "Ella es médica."
+  },
+  {
+    "type": "translation",
+    "question": "Мы устали.",
+    "answer": "Estamos cansados."
+  },
+  {
+    "type": "translation",
+    "question": "Это моя книга.",
+    "answer": "Este es mi libro."
+  },
+  {
+    "type": "fill_in",
+    "question": "Mis amigos _______ en la playa.",
+    "answer": "están"
+  },
+  {
+    "type": "fill_in",
+    "question": "El café _______ caliente.",
+    "answer": "está"
+  },
+  {
+    "type": "fill_in",
+    "question": "_______ las dos de la tarde.",
+    "answer": "Son"
+  },
+  {
+    "type": "correct",
+    "question": "Ella está alta y rubia.",
+    "answer": "Ella es alta y rubia."
+  },
+  {
+    "type": "correct",
+    "question": "Hoy es nublado.",
+    "answer": "Hoy está nublado."
+  },
+  {
+    "type": "correct",
+    "question": "Nosotros somos en el cine.",
+    "answer": "Nosotros estamos en el cine."
+  }
+]

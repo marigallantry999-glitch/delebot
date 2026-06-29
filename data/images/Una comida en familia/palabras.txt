@@ -1,0 +1,15 @@
+la familia : семья
+la cocina : кухня
+la ensalada : салат
+las verduras : овощи
+el tomate : помидор
+el bol : миска
+el delantal : фартук
+el abuelo : дедушка
+la abuela : бабушка
+la niña : девочка
+cocinar : готовить
+ayudar : помогать
+picar : нарезать
+preparar la comida : готовить еду
+compartir las tareas : делить обязанности

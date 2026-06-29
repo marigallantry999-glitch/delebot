@@ -1,0 +1,15 @@
+el muñeco de nieve : снеговик
+la nieve : снег
+la zanahoria : морковь
+la rama : ветка
+el gorro : шапка
+la bufanda : шарф
+los guantes : перчатки
+las botas : сапоги
+la chaqueta : куртка
+el abrigo : пальто
+el frío : холод
+jugar : играть
+lanzar : бросать
+protegerse del frío : защищаться от холода
+el cielo despejado : ясное небо

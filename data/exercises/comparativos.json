@@ -1,0 +1,47 @@
+[
+  {
+    "type": "translation",
+    "question": "Soy más alto que tú.",
+    "answer": "Soy más alto que tú."
+  },
+  {
+    "type": "translation",
+    "question": "Ella es tan simpática como yo.",
+    "answer": "Ella es tan simpática como yo."
+  },
+  {
+    "type": "translation",
+    "question": "Este libro es menos interesante.",
+    "answer": "Este libro es menos interesante."
+  },
+  {
+    "type": "fill_in",
+    "question": "Mi coche es _______ rápido _______ el tuyo.",
+    "answer": "más, que"
+  },
+  {
+    "type": "fill_in",
+    "question": "Juan es _______ alto _______ Pedro.",
+    "answer": "tan, como"
+  },
+  {
+    "type": "fill_in",
+    "question": "Esta ciudad es _______ grande _______ Madrid.",
+    "answer": "menos, que"
+  },
+  {
+    "type": "correct",
+    "question": "Ella es más inteligente que yo.",
+    "answer": "Ella es más inteligente que yo."
+  },
+  {
+    "type": "correct",
+    "question": "Este café es tan bueno como aquel.",
+    "answer": "Este café es tan bueno como aquel."
+  },
+  {
+    "type": "correct",
+    "question": "Tengo menos dinero que tú.",
+    "answer": "Tengo menos dinero que tú."
+  }
+]
