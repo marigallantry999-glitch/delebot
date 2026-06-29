@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lera — полная структура проекта (расширенная)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        }
+        body {
+            background: #f4f0ec;
+            color: #1e1e2a;
+            padding: 16px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 24px 28px 36px;
+            box-shadow: 0 16px 40px -10px rgba(0,0,0,0.10);
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .sub {
+            color: #5f534a;
+            font-size: 15px;
+            margin: 4px 0 24px 0;
+            padding: 8px 16px;
+            background: #faf7f5;
+            border-left: 4px solid #d4b8a8;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.5;
+        }
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            border-bottom: 2px solid #ece4de;
+            padding-bottom: 6px;
+            margin-bottom: 24px;
+        }
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 10px 22px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #5f534a;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .tab-btn:hover {
+            background: #f0e8e2;
+        }
+        .tab-btn.active {
+            background: #1e1e2a;
+            color: #fff;
+        }
+        .tab-content {
+            display: none;
+            animation: fade 0.2s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fade {
+            0% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+
+        .sub-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 16px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #e6dbd3;
+        }
+        .sub-tab-btn {
+            background: transparent;
+            border: none;
+            padding: 6px 18px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #7a6a5e;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .sub-tab-btn:hover {
+            background: #f0e8e2;
+        }
+        .sub-tab-btn.active {
+            background: #ddd4c8;
+            color: #1e1e2a;
+        }
+        .sub-tab-content {
+            display: none;
+            animation: fade 0.2s ease;
+        }
+        .sub-tab-content.active {
+            display: block;
+        }
+
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .card {
+            background: #fcf9f7;
+            border-radius: 18px;
+            padding: 14px 20px 18px;
+            border: 1px solid #eee7e2;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+        .card-header h3 {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .card-header .toggle {
+            font-size: 20px;
+            color: #8b7a6e;
+            transition: 0.2s;
+        }
+        .card-body {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #e6dbd3;
+            display: none;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #2b241f;
+        }
+        .card-body.open {
+            display: block;
+        }
+        .card-body ul, .card-body ol {
+            padding-left: 20px;
+            margin: 6px 0;
+        }
+        .card-body li {
+            margin-bottom: 4px;
+        }
+        .badge {
+            display: inline-block;
+            background: #d4c0b4;
+            color: #1e1e2a;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 2px 12px;
+            border-radius: 40px;
+            letter-spacing: 0.2px;
+        }
+        .badge.green { background: #d1e0d3; }
+        .badge.orange { background: #f0ddd0; }
+        .badge.purple { background: #ddd4e8; }
+        .badge.blue { background: #c8d8e8; }
+        .badge.red { background: #f0d0d0; }
+        .chip {
+            background: #f0e8e2;
+            padding: 3px 14px;
+            border-radius: 40px;
+            font-size: 13px;
+            display: inline-block;
+            margin: 2px 4px 2px 0;
+        }
+        .flex-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 16px;
+            margin: 6px 0;
+        }
+        .note {
+            background: #faf3ed;
+            padding: 10px 16px;
+            border-radius: 14px;
+            border-left: 4px solid #c7b0a0;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+        .note.blue { background: #eef3f8; border-left-color: #8aaec9; }
+        .note.green { background: #e8f3ea; border-left-color: #6aaa7a; }
+        .note.yellow { background: #fcf4e0; border-left-color: #d4a84a; }
+        .mt-2 { margin-top: 10px; }
+        pre {
+            background: #f0ece8;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        pre code {
+            font-family: 'Courier New', monospace;
+        }
+        hr { border: none; border-top: 1px solid #e2d7cf; margin: 12px 0; }
+
+        .week-block {
+            margin-bottom: 30px;
+            border: 2px solid #e6dbd3;
+            border-radius: 18px;
+            padding: 18px 20px;
+            background: #fcf9f7;
+        }
+        .week-block h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #2b241f;
+        }
+        .week-block .section {
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            border-radius: 14px;
+        }
+        .week-block .section.test {
+            background: #eef3f8;
+            border-left: 4px solid #6a8aaa;
+        }
+        .week-block .section.promo {
+            background: #f8f0e8;
+            border-left: 4px solid #c7a888;
+        }
+        .week-block .section.files {
+            background: #f0ece8;
+            border-left: 4px solid #9a8a7a;
+        }
+        .week-block .section h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #3a2f27;
+        }
+        .week-block .section ul {
+            padding-left: 18px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        .week-block .section li {
+            margin-bottom: 2px;
+        }
+
+        /* === TUДУ-ЛИСТ === */
+        .todo-week {
+            border: 2px solid #e6dbd3;
+            border-radius: 18px;
+            padding: 18px 20px;
+            margin-bottom: 20px;
+            background: #fcf9f7;
+        }
+        .todo-week h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #2b241f;
+        }
+        .todo-week .todo-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 8px 12px;
+            margin: 4px 0;
+            border-radius: 10px;
+            background: #fff;
+            border: 1px solid #f0ece8;
+            transition: 0.2s;
+        }
+        .todo-week .todo-item:hover {
+            background: #f8f5f2;
+            border-color: #ddd4c8;
+        }
+        .todo-week .todo-item.done {
+            opacity: 0.6;
+            order: 999;
+            background: #f0f5f0;
+        }
+        .todo-week .todo-item.done .todo-text {
+            text-decoration: line-through;
+        }
+        .todo-week .todo-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 3px;
+            flex-shrink: 0;
+            cursor: pointer;
+            accent-color: #6aaa7a;
+        }
+        .todo-week .todo-text {
+            flex: 1;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .todo-week .todo-text .badge {
+            font-size: 10px;
+            margin-left: 8px;
+        }
+        .todo-week .todo-add {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px dashed #ddd4c8;
+        }
+        .todo-week .todo-add input {
+            flex: 1;
+            padding: 8px 14px;
+            border: 2px solid #e6dbd3;
+            border-radius: 30px;
+            font-size: 14px;
+            outline: none;
+            transition: 0.2s;
+        }
+        .todo-week .todo-add input:focus {
+            border-color: #c7b0a0;
+        }
+        .todo-week .todo-add button {
+            padding: 8px 20px;
+            background: #1e1e2a;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+        .todo-week .todo-add button:hover {
+            background: #3a3a4a;
+        }
+
+        /* === РЕАЛИЗОВАНО === */
+        .realized-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 16px;
+            margin: 6px 0;
+            border-radius: 12px;
+            background: #f0f7f0;
+            border-left: 4px solid #6aaa7a;
+        }
+        .realized-item .check {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .realized-item .content {
+            flex: 1;
+        }
+        .realized-item .content strong {
+            color: #2b5a2b;
+        }
+        .realized-item .content .file-ref {
+            font-family: monospace;
+            font-size: 12px;
+            color: #5a7a5a;
+            background: #e4f0e4;
+            padding: 1px 8px;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 2px 0;
+        }
+
+        .file-path {
+            font-family: monospace;
+            font-size: 12px;
+            color: #6a5a4e;
+            background: #ede8e3;
+            padding: 1px 8px;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 2px 0;
+        }
+        .func-name {
+            font-family: monospace;
+            font-size: 12px;
+            color: #2a5a7a;
+            background: #e4edf5;
+            padding: 1px 8px;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 2px 0;
+        }
+
+        .alternative {
+            background: #fcf4e0;
+            border-left: 4px solid #d4a84a;
+            padding: 10px 16px;
+            border-radius: 10px;
+            margin-top: 6px;
+            font-size: 13px;
+        }
+        .alternative strong {
+            color: #8a6a20;
+        }
+
+        @media (max-width: 700px) {
+            .container { padding: 14px; }
+            .tab-btn { padding: 8px 14px; font-size: 13px; }
+            .card { padding: 12px 14px; }
+            .todo-week .todo-add {
+                flex-wrap: wrap;
+            }
+            .todo-week .todo-add button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🧠 Lera · полная структура проекта (расширенная)</h1>
+    <div class="sub">
+        ⚡ 7 вкладок: UX → Логика → Продвижение → Техническая реализация → Дорожная карта → 📋 Туду-лист → ✅ Уже реализовано.<br>
+        В туду-листе можно отмечать выполненные задачи и добавлять новые.
+    </div>
+
+    <!-- ====== ОСНОВНЫЕ ВКЛАДКИ ====== -->
+    <div class="tabs">
+        <button class="tab-btn" data-tab="tab1">1. Как выглядит (UX)</button>
+        <button class="tab-btn" data-tab="tab2">2. Как реализуется (логика)</button>
+        <button class="tab-btn" data-tab="tab3">3. Как продвигается</button>
+        <button class="tab-btn" data-tab="tab4">4. Техническая реализация</button>
+        <button class="tab-btn" data-tab="tab5">5. Дорожная карта</button>
+        <button class="tab-btn active" data-tab="tab6">📋 Туду-лист</button>
+        <button class="tab-btn" data-tab="tab7">✅ Уже реализовано</button>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB 1 — КАК ВЫГЛЯДИТ (UX) -->
+    <!-- ============================================================ -->
+    <div id="tab1" class="tab-content">
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>👋 Первый запуск</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body open">
+                    <p>Пользователь пишет <code>/start</code> → бот спрашивает:</p>
+                    <ul>
+                        <li>«Как тебя зовут?»</li>
+                    </ul>
+                    <p>Сохраняется в профиль. Дальше — предложение настроить реванш и симулятор DELE (можно пропустить).</p>
+                    <div class="note green">✅ Реализовано: бот спрашивает только имя, обращение всегда "ты".</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>📅 Ежедневная сессия (в 19:00)</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <ol>
+                        <li><strong>Интрига</strong> — персонализированное сообщение.</li>
+                        <li><strong>Картинка</strong> + кнопка «Дай слова» (5–7 слов).</li>
+                        <li><strong>Ответ</strong> — голосовое или текст.</li>
+                        <li><strong>Анализ</strong> — нейросеть находит ошибки (грамматика, структура, коннекторы, повторы, тильды).</li>
+                        <li><strong>Обратная связь</strong> — похвала + одна главная ошибка + упражнение (3 предложения).</li>
+                        <li><strong>Кубок</strong> + <strong>алмазы</strong>.</li>
+                    </ol>
+                    <div class="note mt-2">⏱ Весь процесс — 3–5 минут. Если структура стабильна — план описания скрывается.</div>
+                    <div class="alternative">
+                        <strong>🔄 Можно реализовать по-другому:</strong><br>
+                        Вместо "Дай слова" под картинкой — кнопка "Palabras que te ayudan". Подсказки приходят отдельным сообщением после нажатия кнопки, а не вместе с картинкой. Это улучшает UX и не перегружает пользователя.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>🕘 Пропуск дня (21:00 / 21:30)</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li><strong>21:00</strong> — «Сложный день? Сделай микрозанятие из 3 предложений» → сразу упражнение.</li>
+                        <li><strong>21:30</strong> — если нет ответа: «Можешь сделать упражнение или потратить 15 💎 на заморозку».</li>
+                        <li>Кнопки: «Делаю упражнение» / «Заморозить день (15 💎)».</li>
+                        <li>На следующий день — двойная нагрузка.</li>
+                    </ul>
+                    <div class="note yellow">⏳ Планируется: логика заморозки и расписания ещё не реализована.</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>🗓 Реванш (2 раза в неделю)</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <p>Настраивается пользователем. По умолчанию — понедельник и четверг в 19:00.</p>
+                    <ul>
+                        <li><strong>15 предложений</strong> (5 упражнений по 3 предложения).</li>
+                        <li>Формируется из: ошибочных предложений → топ-3 слабых правил → неиспользуемых правил → закрытых правил.</li>
+                        <li>Новые пакеты НЕ добавляются (в отличие от Daily).</li>
+                        <li>Пройден → кубок + алмазы.</li>
+                    </ul>
+                    <div class="note yellow">⏳ Планируется: механика реванша будет реализована позже.</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>🏆 Турнир (раз в 3 дня)</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Доступ: 18:00–23:00.</li>
+                        <li><strong>15 заданий</strong> по слабым местам.</li>
+                        <li>Награда: эксклюзивный кубок + 10 💎.</li>
+                        <li>Можно открыть <strong>дополнительный турнир</strong> за 20 💎 (выигрыш 30 💎, таймер 5 минут).</li>
+                    </ul>
+                    <div class="note yellow">⏳ Планируется: механика турнира будет реализована позже.</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>🎓 Симулятор DELE (раз в неделю)</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Настраивается пользователем. По умолчанию — суббота 12:00.</li>
+                        <li>Таймер 3 минуты, план описания скрыт.</li>
+                        <li>Оценка по критериям: Связность, Лексика, Грамматика (каждый 1–4 балла).</li>
+                        <li>Все ошибки заносятся в карту ошибок.</li>
+                        <li>График прогресса + награда (+15 💎 за улучшение балла).</li>
+                    </ul>
+                    <div class="note yellow">⏳ Планируется: симулятор DELE будет реализован позже.</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>📋 Меню бота</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="flex-row">
+                        <span class="chip">📊 Мои ошибки</span>
+                        <span class="chip">🔗 Мои коннекторы</span>
+                        <span class="chip">🖼 Результаты по картинкам</span>
+                        <span class="chip">🏆 Кубки и алмазы</span>
+                        <span class="chip">⚙️ Настройки</span>
+                        <span class="chip">📅 Расписание</span>
+                        <span class="chip">❓ FAQ</span>
+                        <span class="chip">🆘 Поддержка</span>
+                        <span class="chip">🐛 Сообщить об ошибке</span>
+                        <span class="chip">💳 Оплата подписки</span>
+                    </div>
+                    <div class="note mt-2">💳 <strong>Оплата подписки</strong> — кнопка для продления или покупки подписки через YooKassa.</div>
+                    <div class="note green">✅ Реализовано: команды /menu, /estadisticas, /perfil, /ayuda, /cancelar_solicitud работают.</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>🏁 Финал уровня</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <p>Когда все картинки описаны и баллы ≥ 4/5 по всем критериям:</p>
+                    <p>«¡Felicidades! Ты прошла все картинки DELE A2 с отличными результатами. Ты готова к экзамену! Вот твой диплом 🎓»</p>
+                    <p>Бот спрашивает согласие на уведомления о новых продуктах (B1).</p>
+                    <div class="note yellow">⏳ Планируется: финал уровня будет реализован позже.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB 2 — КАК РЕАЛИЗУЕТСЯ (ЛОГИКА) -->
+    <!-- ============================================================ -->
+    <div id="tab2" class="tab-content">
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>🧩 Карта ошибок</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body open">
+                    <p>Для каждого правила хранится:</p>
+                    <ul>
+                        <li>Название правила.</li>
+                        <li><strong>Процент освоения</strong> (0–100%).</li>
+                        <li>Исходное предложение пользователя с ошибкой.</li>
+                        <li>Количество успешных пакетов (1 пакет = 3 предложения = 20%).</li>
+                        <li>Статус: active / closed.</li>
+                    </ul>
+                    <div class="flex-row mt-2">
+                        <span class="chip">🔴 0–20% враг</span>
+                        <span class="chip">🟠 21–40% опасность</span>
+                        <span class="chip">🟡 41–60% в процессе</span>
+                        <span class="chip">🟢 61–80% почти побеждён</span>
+                        <span class="chip">✅ 81–100% освоено</span>
+                    </div>
+                    <div class="note mt-2">
+                        <strong>Правило закрытия пакета:</strong><br>
+                        ✅ 3/3 → +20%<br>
+                        ⚡ 2/3 → буст: «Если следующее закроешь на 3/3 — засчитаем оба!»<br>
+                        ❌ 1/3 или 0/3 → пакет не засчитан, предложения → в Лист ошибочных предложений.
+                    </div>
+                    <div class="note yellow">⚠️ В текущей реализации процент считается иначе. Нужно исправить.</div>
+                    <div class="alternative">
+                        <strong>🔄 Нужно исправить:</strong><br>
+                        В промте нейросети убрать поле "correct" (оно всегда 0). Процент должен увеличиваться на 20% за каждую найденную ошибку, а не зависеть от correct.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>📋 Карта коннекторов</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <p><strong>Полный список:</strong> <code>y/e, también, además, pero, sino, sin embargo, porque, ya que, entonces, por eso, primero, luego/después, finalmente/al final</code></p>
+                    <ul>
+                        <li>Счётчик использований по каждому.</li>
+                        <li>Минимум <strong>3 разных</strong> коннектора за описание.</li>
+                        <li>Перекос: если один коннектор >50% → миссия «не используй "y" сегодня!».</li>
+                    </ul>
+                    <div class="note yellow">⏳ Планируется: карта коннекторов будет реализована позже.</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>📋 Карта правил DELE A2</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <p><strong>13 правил:</strong> Ser/Estar, Hay/Está, Gerundio, Preposiciones, Género, Concordancia, Pretérito Indefinido, Imperativo, Pronombres, Verbos reflexivos, Perífrasis, Comparativos, Muy/Mucho.</p>
+                    <p><strong>Статусы:</strong> unused → in_use → used</p>
+                    <p>Если правило долго в <code>unused</code> → бот предлагает попробовать.</p>
+                    <div class="note yellow">⏳ Планируется: карта правил будет реализована позже.</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>📦 Лист ошибочных предложений</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <p>При 0/3 или 1/3 — исходные предложения с ошибками сохраняются.</p>
+                    <ul>
+                        <li>Используются на реванше: «Исправь ошибку в своём предложении».</li>
+                        <li>Пополняется при неудачных попытках, расходуется на реваншах.</li>
+                    </ul>
+                    <div class="note yellow">⏳ Планируется: лист ошибочных предложений будет реализован позже.</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>💎 Алмазы и кубки</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <p><strong>Заработок:</strong> +1 за Daily, +1 за streak≥3, +3 за 3/3, +5 за закрытие правила, +10 за турнир, +15 за улучшение балла DELE.</p>
+                    <p><strong>Траты:</strong> 15 💎 — заморозка, 20 💎 — доп.турнир, 120 💎 — скидка 20% на подписку.</p>
+                    <div class="note green">✅ Реализовано: начисление алмазов за сессию, стрик, упражнения.</div>
+                    <div class="note yellow">⏳ Планируется: трата алмазов на заморозку и турнир.</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>🖼 Контент: изображения и описания</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Каждая картинка имеет <strong>уникальный ID</strong>.</li>
+                        <li><strong>Полное описание</strong> — все детали (для нейросети).</li>
+                        <li><strong>Эталонное описание</strong> — по формату DELE (план из 7 пунктов).</li>
+                        <li><strong>Лексика</strong> — 5–7 слов с переводом.</li>
+                    </ul>
+                    <div class="note green">✅ Реализовано: структура папок с картинками и файлами.</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>📝 Борьба с повторами + тильды</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Отслеживание частых слов (<code>la gente</code>, <code>por ejemplo</code>, <code>creo que</code> и др.).</li>
+                        <li>Если слово использовано 3 раза без синонимов → ошибка + микроупражнение «Дай 3 синонима».</li>
+                        <li>Тильды → отдельная ошибка в карте ошибок. Бот объясняет и даёт упражнения.</li>
+                    </ul>
+                    <div class="note yellow">⏳ Планируется: будет реализовано позже.</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>📝 Генерация упражнений (ручной пул)</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <p>Упражнения НЕ генерируются нейросетью — они лежат в коде.</p>
+                    <ul>
+                        <li><strong>Тип 1: Перевод</strong> — «Переведи на испанский: "Я хочу пойти в кино"».</li>
+                        <li><strong>Тип 2: Вставка</strong> — «Вставь пропущенное слово: "Ella ___ (ser/estar) en la cocina"».</li>
+                        <li><strong>Тип 3: Исправление</strong> — «Исправь ошибку: "El gato es en la cocina"».</li>
+                    </ul>
+                    <p>Упражнения привязаны к правилам из <code>card_rules</code>. Хранятся в <code>data/exercises/{rule_name}.json</code>.</p>
+                    <div class="note green">✅ Реализовано: все 13 файлов с упражнениями созданы.</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>💳 Оплата подписки (логика)</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li><strong>Триал:</strong> 7 дней бесплатно при первом запуске.</li>
+                        <li><strong>Подписка:</strong> 299 ₽/мес через YooKassa.</li>
+                        <li>При оплате — в профиль записывается <code>subscription_until: "2026-07-25"</code>.</li>
+                        <li>Каждый день бот проверяет: если подписка истекла → переводит в бесплатный режим.</li>
+                        <li>Кнопка «Оплатить» в меню генерирует ссылку на оплату.</li>
+                        <li>После успешной оплаты — приходит уведомление и активируется подписка.</li>
+                    </ul>
+                    <div class="note yellow">⏳ Планируется: будет реализовано позже.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB 3 — КАК ПРОДВИГАЕТСЯ -->
+    <!-- ============================================================ -->
+    <div id="tab3" class="tab-content">
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>🎯 УТП (как выделиться)</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body open">
+                    <ul>
+                        <li><strong>«Готовим не к языку, а к ЭКЗАМЕНУ»</strong> — чёткая цель.</li>
+                        <li><strong>«Личный тренер, который помнит ошибки лучше тебя»</strong> — персонализация.</li>
+                        <li><strong>«Дофамин от победы, а не от скроллинга»</strong> — против TikTok.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>💰 Монетизация</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <p><strong>Триал: 7 дней бесплатно</strong> — полный доступ.</p>
+                    <p><strong>Подписка: 299 ₽/мес</strong> — неограниченные Daily, Реванш, Турнир, Симулятор DELE, пересдача картинок.</p>
+                    <p><strong>Бесплатно после триала:</strong> 1 Daily в неделю, 3 упражнения в неделю, 1 турнир в неделю, просмотр карт.</p>
+                    <p><strong>Оплата:</strong> через YooKassa (платёжная система).</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>📈 Ключевые метрики</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li><strong>ARPU</strong> — средний доход с пользователя.</li>
+                        <li><strong>LTV</strong> — сколько приносит пользователь за всё время.</li>
+                        <li><strong>Churn Rate</strong> — сколько уходит после триала.</li>
+                        <li><strong>Retention</strong> — возвращаемость на 7, 14, 30 день.</li>
+                        <li><strong>Конверсия в подписку</strong> — % после триала.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>📣 Каналы продвижения</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li><strong>Группы и чаты:</strong> «DELE A2», «Испанский язык» — бесплатный доступ за фидбек.</li>
+                        <li><strong>Telegram-каналы:</strong> посты «Топ-3 ошибки на DELE A2» + ссылка на бота.</li>
+                        <li><strong>Реферальная программа:</strong> «Пригласи друга → получи 10 💎».</li>
+                        <li><strong>Таргет:</strong> на аудиторию, готовящуюся к DELE.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>🧪 Бета-тест</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <p><strong>Найди 10–15 реальных учеников испанского.</strong></p>
+                    <ul>
+                        <li>Бесплатный доступ в обмен на фидбек.</li>
+                        <li>Собери: что нравится, что бесит, где уходят.</li>
+                        <li>Исправь баги до открытого запуска.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>📝 Обработка нецензурной лексики (механика продвижения)</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li><strong>Испанский мат:</strong> «Ого, ты знаешь испанские выражения! Молодец! 😉 Но на DELE так нельзя. Хочешь урок сленга за 50 💎?»</li>
+                        <li><strong>Русский мат:</strong> «Давай не будем так. Хочешь узнать, как это на испанском? Урок сленга за 50 💎».</li>
+                        <li>Проверка покупки: если уже купил — не предлагать повторно.</li>
+                        <li>Всегда предупреждать: на экзамене так говорить нельзя.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB 4 — ТЕХНИЧЕСКАЯ РЕАЛИЗАЦИЯ -->
+    <!-- ============================================================ -->
+    <div id="tab4" class="tab-content">
+        <div class="sub-tabs">
+            <button class="sub-tab-btn active" data-subtab="sub1">📁 Структура папок</button>
+            <button class="sub-tab-btn" data-subtab="sub2">⚙️ Реализация по блокам</button>
+        </div>
+
+        <!-- ПОД-ТАБ 4.1: СТРУКТУРА ПАПОК -->
+        <div id="sub1" class="sub-tab-content active">
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>📁 Корневая структура проекта</h3>
+                        <span class="toggle">▼</span>
+                    </div>
+                    <div class="card-body open">
+                        <pre><code>lera_bot/
+├── 📁 bot/
+│   ├── __init__.py
+│   ├── main.py              # Точка входа, запуск бота (aiogram)
+│   ├── handlers.py          # Обработчики команд: /start, меню, callback'и
+│   ├── keyboards.py         # Inline-кнопки, Reply-клавиатуры
+│   └── states.py            # FSM состояния для сессий
+│
+├── 📁 core/
+│   ├── __init__.py
+│   ├── profile.py           # Работа с JSON-профилем
+│   ├── cards.py             # Карта ошибок, коннекторов, правил
+│   ├── session.py           # Daily-сессия
+│   ├── revenge.py           # Реванш
+│   ├── tournament.py        # Турнир
+│   ├── dele_simulator.py    # Симулятор DELE
+│   └── payment.py           # Оплата подписки (YooKassa)
+│
+├── 📁 ai/
+│   ├── __init__.py
+│   ├── openrouter_client.py # Запросы к OpenRouter API (анализ описаний)
+│   ├── whisper_client.py    # Распознавание голоса через Whisper
+│   ├── deepgram_client.py   # Альтернатива Whisper (Deepgram)
+│   └── prompts.py           # Промпты для нейросети
+│
+├── 📁 data/
+│   ├── images/              # Папка с картинками
+│   ├── users/               # Папка с JSON-профилями пользователей
+│   └── exercises/           # Ручной пул упражнений
+│
+├── 📁 utils/
+│   ├── __init__.py
+│   ├── logger.py            # Логирование
+│   ├── scheduler.py         # Расписание
+│   └── cache.py             # Кэш для ответов нейросети
+│
+├── 📁 admin/
+│   ├── __init__.py
+│   ├── panel.py             # Админ-панель
+│   └── add_image.py         # Добавление картинок
+│
+├── 📁 filters/
+│   ├── __init__.py
+│   └── profanity_filter.py  # Фильтр нецензурной лексики
+│
+├── requirements.txt
+├── .env
+└── config.py</code></pre>
+                        <div class="note green">✅ Реализовано: структура папок создана.</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>📄 Описание ключевых файлов</h3>
+                        <span class="toggle">▼</span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><strong><code>bot/main.py</code></strong> — инициализация бота, диспетчера, запуск поллинга. <span class="badge green">✅</span></li>
+                            <li><strong><code>bot/handlers.py</code></strong> — все команды и callback'и. <span class="badge green">✅</span></li>
+                            <li><strong><code>core/profile.py</code></strong> — <code>load_profile()</code>, <code>save_profile()</code>, работа с алмазами. <span class="badge green">✅</span></li>
+                            <li><strong><code>core/cards.py</code></strong> — три карты: ошибки, коннекторы, правила. <span class="badge yellow">⏳</span></li>
+                            <li><strong><code>core/payment.py</code></strong> — генерация ссылок на оплату, проверка статуса. <span class="badge yellow">⏳</span></li>
+                            <li><strong><code>ai/openrouter_client.py</code></strong> — анализ описаний через OpenRouter. <span class="badge green">✅</span></li>
+                            <li><strong><code>utils/scheduler.py</code></strong> — APScheduler для расписания. <span class="badge yellow">⏳</span></li>
+                            <li><strong><code>admin/panel.py</code></strong> — статистика для админа. <span class="badge green">✅ (частично)</span></li>
+                        </ul>
+                        <div class="alternative">
+                            <strong>🔄 OpenRouter требует доработки:</strong><br>
+                            Сейчас бот не перебирает модели, а использует одну и ту же. Нужно исправить логику цикла. Также таймаут 10 секунд нужно уменьшить до 3 секунд.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ПОД-ТАБ 4.2: РЕАЛИЗАЦИЯ ПО БЛОКАМ -->
+        <div id="sub2" class="sub-tab-content">
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>👋 Первый запуск</h3>
+                        <span class="toggle">▼</span>
+                    </div>
+                    <div class="card-body open">
+                        <p><strong>Файл:</strong> <code>bot/handlers.py</code></p>
+                        <p><strong>Основные функции:</strong></p>
+                        <pre><code>@router.message(Command("start"))
+@router.message(Command("inicio"))
+async def inicio_command(message: types.Message, state: FSMContext):
+    # Проверяем, есть ли профиль
+    if profile_exists:
+        await message.answer("С возвращением!")
+        return
+    await message.answer("¡Hola! Меня зовут Lera. Как я могу к тебе обращаться?")
+    await RegistrationState.waiting_for_name.set()</code></pre>
+                        <div class="note green">✅ Реализовано: /start и /inicio работают, имя сохраняется.</div>
+                        <div class="note">📌 После сбора данных — <code>create_profile()</code> сохраняет JSON в <code>data/users/user_{id}.json</code>. Сразу активируется триал на 7 дней.</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>📅 Daily-сессия</h3>
+                        <span class="toggle">▼</span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Файл:</strong> <code>core/session.py</code> + <code>bot/handlers.py</code></p>
+                        <p><strong>Основные функции:</strong></p>
+                        <pre><code>async def diario_command(message: types.Message, state: FSMContext):
+    image_data = get_next_image(user_id)
+    photo = FSInputFile(image_data['image_path'])
+    await message.answer_photo(photo, caption=caption)</code></pre>
+                        <div class="note green">✅ Реализовано: бот присылает картинку, ждёт описание.</div>
+                        <div class="alternative">
+                            <strong>🔄 Нужно исправить порядок сообщений:</strong><br>
+                            1. Сначала приветствие ("Привет! Я тебя заждалась!")<br>
+                            2. Потом картинка + структура + "Describe lo que ves" + кнопка "Palabras que te ayudan"<br>
+                            3. По кнопке — отдельным сообщением слова-подсказки<br>
+                            4. Затем "Жду твоего описания"
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>🤖 Анализ через OpenRouter</h3>
+                        <span class="toggle">▼</span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Файл:</strong> <code>ai/openrouter_client.py</code></p>
+                        <p><strong>Основные функции:</strong></p>
+                        <pre><code>async def analyze_with_openrouter(prompt: str, system_prompt: str = None):
+    result = await client.analyze_with_fallback(prompt, system_prompt)
+    return client.extract_json(result)</code></pre>
+                        <div class="note green">✅ Реализовано: отправка запросов в OpenRouter.</div>
+                        <div class="note yellow">⚠️ Есть проблемы:</div>
+                        <ul>
+                            <li>❌ Модели не перебираются — используется одна и та же</li>
+                            <li>❌ Таймаут 10 секунд — слишком долго</li>
+                        </ul>
+                        <div class="alternative">
+                            <strong>🔄 Нужно исправить:</strong><br>
+                            1. Перебирать модели по очереди при каждом запросе<br>
+                            2. Уменьшить таймаут до 3 секунд<br>
+                            3. Если модель не отвечает за 3 секунды — переходить к следующей
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>📝 Упражнения</h3>
+                        <span class="toggle">▼</span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Файл:</strong> <code>core/exercises.py</code></p>
+                        <p><strong>Основные функции:</strong></p>
+                        <pre><code>def get_exercise_by_rule(rule_name: str) -> Optional[Dict]:
+    file_path = Path(f"{EXERCISES_DIR}/{rule_name}.json")
+    exercises = json.load(f)
+    return random.choice(exercises)</code></pre>
+                        <div class="note green">✅ Реализовано: выбор случайного упражнения из JSON-файла.</div>
+                        <div class="note">📌 Все 13 файлов с упражнениями созданы.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB 5 — ДОРОЖНАЯ КАРТА -->
+    <!-- ============================================================ -->
+    <div id="tab5" class="tab-content">
+        <div class="sub-tabs">
+            <button class="sub-tab-btn active" data-subtab="week1">Неделя 1</button>
+            <button class="sub-tab-btn" data-subtab="week2">Неделя 2</button>
+            <button class="sub-tab-btn" data-subtab="week3">Неделя 3</button>
+            <button class="sub-tab-btn" data-subtab="week4">Неделя 4</button>
+            <button class="sub-tab-btn" data-subtab="week5">Неделя 5</button>
+            <button class="sub-tab-btn" data-subtab="week6">Неделя 6</button>
+            <button class="sub-tab-btn" data-subtab="week7">Неделя 7</button>
+            <button class="sub-tab-btn" data-subtab="week8">Неделя 8</button>
+        </div>
+
+        <div id="week1" class="sub-tab-content active">
+            <div class="week-block">
+                <h3>📍 Неделя 1. MVP v1: Daily-сессия + Карта ошибок</h3>
+                <div class="section test">
+                    <h4>🧪 Тест (что видит пользователь)</h4>
+                    <ul>
+                        <li>👋 Пишет <code>/start</code> → знакомство с ботом, выбирает имя</li>
+                        <li>📅 В 19:00 приходит картинка с просьбой описать</li>
+                        <li>📝 Описывает → получает фидбек с ошибками (грамматика, структура)</li>
+                        <li>📊 В меню видит проценты ошибок по каждому правилу</li>
+                        <li>💎 Получает первый кубок за сессию и +1 алмаз</li>
+                        <li>🎁 Активируется триал на 7 дней (бесплатно)</li>
+                    </ul>
+                    <div class="note green">✅ Реализовано: регистрация, сессия, кубок, алмазы.</div>
+                </div>
+                <div class="section promo">
+                    <h4>📣 Продвижение</h4>
+                    <ul>
+                        <li><strong>Группы DELE A2:</strong> «Хочешь бесплатно потренировать устную часть перед экзаменом?»</li>
+                        <li><strong>Бета-тест:</strong> пригласить 10-15 человек за фидбек</li>
+                        <li><strong>Сбор обратной связи:</strong> что нравится, что бесит, где уходят</li>
+                    </ul>
+                </div>
+                <div class="section files">
+                    <h4>📁 Файлы и функции</h4>
+                    <ul>
+                        <li><span class="file-path">bot/main.py</span> — запуск бота, инициализация aiogram</li>
+                        <li><span class="file-path">bot/handlers.py</span> — <span class="func-name">inicio_command</span> (приветствие), <span class="func-name">process_name</span> (сохранение имени)</li>
+                        <li><span class="file-path">core/session.py</span> — <span class="func-name">diario_command</span> (отправка картинки), <span class="func-name">process_description</span> (обработка ответа)</li>
+                        <li><span class="file-path">core/cards.py</span> — <span class="func-name">update_error_card</span> (запись ошибок)</li>
+                        <li><span class="file-path">ai/openrouter_client.py</span> — <span class="func-name">analyze_with_openrouter</span> (анализ через OpenRouter)</li>
+                        <li><span class="file-path">core/profile.py</span> — <span class="func-name">load_profile</span>, <span class="func-name">save_profile</span>, <span class="func-name">create_profile</span></li>
+                        <li><span class="file-path">bot/states.py</span> — FSM состояния: <code>RegistrationState</code>, <code>DailyState</code></li>
+                        <li><span class="file-path">data/images/</span> — папки с картинками</li>
+                        <li><span class="file-path">data/exercises/</span> — файлы упражнений</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="week2" class="sub-tab-content">
+            <div class="week-block">
+                <h3>📍 Неделя 2. MVP v2: Система пакетов + Алмазы + Меню + Оплата</h3>
+                <div class="section test">
+                    <h4>🧪 Тест (что видит пользователь)</h4>
+                    <ul>
+                        <li>📝 Упражнения теперь по 3 предложения (пакеты)</li>
+                        <li>📊 При 3/3 — «¡Perfecto!» и +20% к правилу</li>
+                        <li>⚡ При 2/3 — буст</li>
+                        <li>💎 Алмазы: +1 за Daily, +3 за 3/3, +5 за закрытие правила</li>
+                        <li>📋 В меню — «Мои ошибки», «Коннекторы», «Кубки и алмазы»</li>
+                        <li>⏰ Сессия автоматически приходит в 19:00</li>
+                        <li>💳 В меню появляется кнопка «Оплатить подписку»</li>
+                    </ul>
+                    <div class="note yellow">⏳ Планируется: система пакетов и расписание.</div>
+                </div>
+                <div class="section files">
+                    <h4>📁 Файлы и функции</h4>
+                    <ul>
+                        <li><span class="file-path">core/cards.py</span> — <span class="func-name">update_error_card</span> (логика 3/3, 2/3, 1/3)</li>
+                        <li><span class="file-path">core/profile.py</span> — <span class="func-name">add_diamonds</span>, <span class="func-name">spend_diamonds</span></li>
+                        <li><span class="file-path">utils/scheduler.py</span> — <span class="func-name">schedule_daily</span> (запуск Daily в 19:00)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="week3" class="sub-tab-content">
+            <div class="week-block">
+                <h3>📍 Неделя 3. MVP v3: Триал + Подписка + Админка</h3>
+                <div class="section test">
+                    <h4>🧪 Тест (что видит пользователь)</h4>
+                    <ul>
+                        <li>🎁 7-дневный триал при первом запуске</li>
+                        <li>💳 После триала — предложение подписки 299 ₽/мес</li>
+                        <li>📊 Админ видит статистику в <code>/stats</code></li>
+                        <li>🖼 Админ может добавлять картинки через бота</li>
+                    </ul>
+                    <div class="note green">✅ Триал в профиле есть. Админ-отчёты реализованы.</div>
+                </div>
+                <div class="section files">
+                    <h4>📁 Файлы и функции</h4>
+                    <ul>
+                        <li><span class="file-path">core/profile.py</span> — <span class="func-name">check_subscription</span></li>
+                        <li><span class="file-path">admin/panel.py</span> — <span class="func-name">send_daily_report</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="week4" class="sub-tab-content">
+            <div class="week-block">
+                <h3>📍 Неделя 4. Реванш + Турнир</h3>
+                <div class="section test">
+                    <h4>🧪 Тест (что видит пользователь)</h4>
+                    <ul>
+                        <li>🗓 Реванш 2 раза в неделю</li>
+                        <li>🏆 Турнир раз в 3 дня</li>
+                        <li>💎 Дополнительный турнир за 20 💎</li>
+                    </ul>
+                    <div class="note yellow">⏳ Планируется: реванш и турнир.</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="week5" class="sub-tab-content">
+            <div class="week-block">
+                <h3>📍 Неделя 5. Симулятор DELE + График прогресса</h3>
+                <div class="section test">
+                    <h4>🧪 Тест (что видит пользователь)</h4>
+                    <ul>
+                        <li>🎓 Раз в неделю — режим экзамена</li>
+                        <li>📊 Оценка по критериям</li>
+                        <li>📈 График прогресса</li>
+                        <li>💎 +15 алмазов за улучшение балла</li>
+                    </ul>
+                    <div class="note yellow">⏳ Планируется: симулятор DELE.</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="week6" class="sub-tab-content">
+            <div class="week-block">
+                <h3>📍 Неделя 6. Технические доработки: Whisper + Кэш + Deepgram</h3>
+                <div class="section test">
+                    <h4>🧪 Тест (что видит пользователь)</h4>
+                    <ul>
+                        <li>🎤 Голосовые сообщения распознаются</li>
+                        <li>✅ Подтверждение текста пользователем</li>
+                        <li>⚡ Кэш для частых запросов</li>
+                    </ul>
+                    <div class="note yellow">⏳ Планируется: голосовые и кэш.</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="week7" class="sub-tab-content">
+            <div class="week-block">
+                <h3>📍 Неделя 7. Контент: 50 картинок + упражнения + нецензурная лексика</h3>
+                <div class="section test">
+                    <h4>🧪 Тест (что видит пользователь)</h4>
+                    <ul>
+                        <li>🖼 50 уникальных картинок</li>
+                        <li>📚 Лексика к каждой картинке</li>
+                        <li>📝 Упражнения по всем 13 правилам</li>
+                        <li>😈 Реакция на нецензурную лексику</li>
+                    </ul>
+                    <div class="note yellow">⏳ Планируется: контент и фильтр.</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="week8" class="sub-tab-content">
+            <div class="week-block">
+                <h3>📍 Неделя 8. Полировка + Запуск + Финал</h3>
+                <div class="section test">
+                    <h4>🧪 Тест (что видит пользователь)</h4>
+                    <ul>
+                        <li>✅ Все механики работают стабильно</li>
+                        <li>🐛 Нет критических багов</li>
+                        <li>🎯 Финал уровня: диплом + предложение B1</li>
+                        <li>💳 Оплата работает без сбоев</li>
+                    </ul>
+                    <div class="note yellow">⏳ Планируется: финальная полировка.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB 6 — ТУДУ-ЛИСТ -->
+    <!-- ============================================================ -->
+    <div id="tab6" class="tab-content active">
+        <div class="sub">
+            📋 Здесь собраны задачи по неделям. Отмечай выполненные галочками. Новые задачи добавляются в текущую неделю.
+        </div>
+
+        <!-- Неделя 1 -->
+        <div class="todo-week" data-week="1">
+            <h3>📅 Неделя 1. MVP v1: Daily-сессия + Карта ошибок</h3>
+            <div class="todo-list" id="todo-week1">
+                <div class="todo-item done">
+                    <input type="checkbox" checked>
+                    <span class="todo-text">Создать структуру проекта (папки)</span>
+                </div>
+                <div class="todo-item done">
+                    <input type="checkbox" checked>
+                    <span class="todo-text">Написать <code>bot/main.py</code> — запуск бота</span>
+                </div>
+                <div class="todo-item done">
+                    <input type="checkbox" checked>
+                    <span class="todo-text">Написать <code>bot/handlers.py</code> — /start и /inicio</span>
+                </div>
+                <div class="todo-item done">
+                    <input type="checkbox" checked>
+                    <span class="todo-text">Написать <code>core/profile.py</code> — работа с профилями</span>
+                </div>
+                <div class="todo-item done">
+                    <input type="checkbox" checked>
+                    <span class="todo-text">Написать <code>core/session.py</code> — Daily-сессия</span>
+                </div>
+                <div class="todo-item done">
+                    <input type="checkbox" checked>
+                    <span class="todo-text">Написать <code>ai/openrouter_client.py</code> — запросы к OpenRouter</span>
+                </div>
+                <div class="todo-item done">
+                    <input type="checkbox" checked>
+                    <span class="todo-text">Создать <code>data/images/</code> с картинками</span>
+                </div>
+                <div class="todo-item done">
+                    <input type="checkbox" checked>
+                    <span class="todo-text">Создать <code>data/exercises/</code> с упражнениями</span>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">🔴 <strong>Исправить карту ошибок:</strong> убрать correct из промта, переделать логику процентов</span>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">🔴 <strong>Исправить OpenRouter:</strong> перебор моделей по очереди</span>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">🔴 <strong>Изменить таймаут</strong> с 10 секунд на 3 секунды</span>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">🔄 <strong>Исправить порядок сообщений:</strong> приветствие → картинка + структура → кнопка с подсказками → "Жду описания"</span>
+                </div>
+            </div>
+            <div class="todo-add">
+                <input type="text" placeholder="➕ Добавить задачу на эту неделю..." data-week="1">
+                <button onclick="addTodo(this)">Добавить</button>
+            </div>
+        </div>
+
+        <!-- Неделя 2 -->
+        <div class="todo-week" data-week="2">
+            <h3>📅 Неделя 2. MVP v2: Система пакетов + Алмазы + Меню</h3>
+            <div class="todo-list" id="todo-week2">
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Реализовать систему пакетов (3/3, 2/3, 1/3) <span class="badge yellow">⏳</span></span>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Добавить меню «Мои ошибки» <span class="badge yellow">⏳</span></span>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Добавить меню «Коннекторы» <span class="badge yellow">⏳</span></span>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Добавить меню «Кубки и алмазы» <span class="badge yellow">⏳</span></span>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Настроить расписание Daily в 19:00 <span class="badge yellow">⏳</span></span>
+                </div>
+            </div>
+            <div class="todo-add">
+                <input type="text" placeholder="➕ Добавить задачу на эту неделю..." data-week="2">
+                <button onclick="addTodo(this)">Добавить</button>
+            </div>
+        </div>
+
+        <!-- Неделя 3 -->
+        <div class="todo-week" data-week="3">
+            <h3>📅 Неделя 3. Триал + Подписка + Админка</h3>
+            <div class="todo-list" id="todo-week3">
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Реализовать триал 7 дней <span class="badge yellow">⏳</span></span>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Добавить предложение подписки 299 ₽/мес <span class="badge yellow">⏳</span></span>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Добавить админ-панель с добавлением картинок <span class="badge yellow">⏳</span></span>
+                </div>
+            </div>
+            <div class="todo-add">
+                <input type="text" placeholder="➕ Добавить задачу на эту неделю..." data-week="3">
+                <button onclick="addTodo(this)">Добавить</button>
+            </div>
+        </div>
+
+        <!-- Неделя 4 -->
+        <div class="todo-week" data-week="4">
+            <h3>📅 Неделя 4. Реванш + Турнир</h3>
+            <div class="todo-list" id="todo-week4">
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Реализовать Реванш (2 раза в неделю) <span class="badge yellow">⏳</span></span>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Реализовать Турнир (раз в 3 дня) <span class="badge yellow">⏳</span></span>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Добавить дополнительный турнир за 20 💎 <span class="badge yellow">⏳</span></span>
+                </div>
+            </div>
+            <div class="todo-add">
+                <input type="text" placeholder="➕ Добавить задачу на эту неделю..." data-week="4">
+                <button onclick="addTodo(this)">Добавить</button>
+            </div>
+        </div>
+
+        <!-- Неделя 5 -->
+        <div class="todo-week" data-week="5">
+            <h3>📅 Неделя 5. Симулятор DELE + График прогресса</h3>
+            <div class="todo-list" id="todo-week5">
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Реализовать Симулятор DELE <span class="badge yellow">⏳</span></span>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Добавить оценку по критериям (Связность, Лексика, Грамматика) <span class="badge yellow">⏳</span></span>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Добавить график прогресса <span class="badge yellow">⏳</span></span>
+                </div>
+            </div>
+            <div class="todo-add">
+                <input type="text" placeholder="➕ Добавить задачу на эту неделю..." data-week="5">
+                <button onclick="addTodo(this)">Добавить</button>
+            </div>
+        </div>
+
+        <!-- Неделя 6 -->
+        <div class="todo-week" data-week="6">
+            <h3>📅 Неделя 6. Whisper + Кэш + Deepgram</h3>
+            <div class="todo-list" id="todo-week6">
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Добавить распознавание голоса через Whisper <span class="badge yellow">⏳</span></span>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Добавить подтверждение текста пользователем <span class="badge yellow">⏳</span></span>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Добавить кэширование ответов нейросети <span class="badge yellow">⏳</span></span>
+                </div>
+            </div>
+            <div class="todo-add">
+                <input type="text" placeholder="➕ Добавить задачу на эту неделю..." data-week="6">
+                <button onclick="addTodo(this)">Добавить</button>
+            </div>
+        </div>
+
+        <!-- Неделя 7 -->
+        <div class="todo-week" data-week="7">
+            <h3>📅 Неделя 7. Контент + Нецензурная лексика</h3>
+            <div class="todo-list" id="todo-week7">
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Добавить 50 картинок с описаниями <span class="badge yellow">⏳</span></span>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Добавить фильтр нецензурной лексики <span class="badge yellow">⏳</span></span>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Добавить урок сленга за 50 💎 <span class="badge yellow">⏳</span></span>
+                </div>
+            </div>
+            <div class="todo-add">
+                <input type="text" placeholder="➕ Добавить задачу на эту неделю..." data-week="7">
+                <button onclick="addTodo(this)">Добавить</button>
+            </div>
+        </div>
+
+        <!-- Неделя 8 -->
+        <div class="todo-week" data-week="8">
+            <h3>📅 Неделя 8. Полировка + Запуск + Финал</h3>
+            <div class="todo-list" id="todo-week8">
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Финальная полировка и оптимизация <span class="badge yellow">⏳</span></span>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Реализовать финал уровня (диплом + B1) <span class="badge yellow">⏳</span></span>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox">
+                    <span class="todo-text">Запуск в открытый доступ <span class="badge yellow">⏳</span></span>
+                </div>
+            </div>
+            <div class="todo-add">
+                <input type="text" placeholder="➕ Добавить задачу на эту неделю..." data-week="8">
+                <button onclick="addTodo(this)">Добавить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB 7 — УЖЕ РЕАЛИЗОВАНО -->
+    <!-- ============================================================ -->
+    <div id="tab7" class="tab-content">
+        <div class="sub">
+            ✅ Здесь собрано всё, что уже реализовано в проекте. Отмечены зелёной галочкой и указаны файлы реализации.
+        </div>
+
+        <div class="card-grid">
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>📁 Структура проекта</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body open">
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>Создана полная структура папок</strong><br>
+                            <span class="file-ref">bot/</span> — основная логика бота<br>
+                            <span class="file-ref">core/</span> — работа с профилями, сессиями, упражнениями<br>
+                            <span class="file-ref">ai/</span> — OpenRouter клиент и промпты<br>
+                            <span class="file-ref">data/</span> — картинки, упражнения, профили пользователей<br>
+                            <span class="file-ref">utils/</span>, <span class="file-ref">admin/</span>, <span class="file-ref">filters/</span> — вспомогательные модули
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>👤 Регистрация пользователя</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>Работают команды /start и /inicio</strong><br>
+                            Бот спрашивает имя, сохраняет в профиль. Обращение всегда на "ты".<br>
+                            <span class="file-ref">bot/handlers.py</span> — <span class="func-name">inicio_command</span>, <span class="func-name">process_name</span><br>
+                            <span class="file-ref">core/profile.py</span> — <span class="func-name">create_profile</span>, <span class="func-name">save_profile</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>📅 Daily-сессия</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>Команда /diario работает</strong><br>
+                            Бот отправляет картинку, ждёт описание, анализирует через OpenRouter.<br>
+                            <span class="file-ref">bot/handlers.py</span> — <span class="func-name">diario_command</span><br>
+                            <span class="file-ref">core/session.py</span> — <span class="func-name">process_daily_description</span><br>
+                            <span class="file-ref">core/session.py</span> — <span class="func-name">get_next_image</span>
+                        </div>
+                    </div>
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>Кнопка "Дай слова" работает</strong><br>
+                            Отправляет лексику из <span class="file-ref">palabras.txt</span><br>
+                            <span class="file-ref">bot/handlers.py</span> — <span class="func-name">give_lexis</span>
+                        </div>
+                    </div>
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>Структура DELE на испанском</strong><br>
+                            В описании картинки и в инструкции<br>
+                            <span class="file-ref">bot/handlers.py</span> — <span class="func-name">diario_command</span>, <span class="func-name">instrucciones_command</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>🧠 Анализ через OpenRouter</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>Отправка запросов работает</strong><br>
+                            <span class="file-ref">ai/openrouter_client.py</span> — <span class="func-name">analyze_with_openrouter</span><br>
+                            <span class="file-ref">ai/prompts.py</span> — системный промпт и список правил
+                        </div>
+                    </div>
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>3 ключа OpenRouter</strong><br>
+                            Переключение между ключами при ошибках<br>
+                            <span class="file-ref">config.py</span> — OPENROUTER_API_KEYS
+                        </div>
+                    </div>
+                    <div class="note yellow">
+                        ⚠️ <strong>Нужно доработать:</strong> перебор моделей (сейчас всегда первая), таймаут 10с → 3с
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>📝 Упражнения</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>13 правил × 9 упражнений = 117 упражнений</strong><br>
+                            Типы: перевод, вставка, исправление<br>
+                            <span class="file-ref">data/exercises/</span> — 13 JSON-файлов<br>
+                            <span class="file-ref">core/exercises.py</span> — <span class="func-name">get_exercise_by_rule</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>💎 Алмазы и кубки</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>Начисление алмазов работает</strong><br>
+                            +1 за сессию, +1 за стрик ≥3, +3 за упражнение 3/3<br>
+                            <span class="file-ref">core/profile.py</span> — <span class="func-name">add_diamonds</span><br>
+                            <span class="file-ref">bot/handlers.py</span> — <span class="func-name">show_daily_reward</span>
+                        </div>
+                    </div>
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>Стрик (streak) работает</strong><br>
+                            <span class="file-ref">core/profile.py</span> — <span class="func-name">update_streak</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>📊 Меню и статистика</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>/menu — главное меню</strong><br>
+                            <span class="file-ref">bot/handlers.py</span> — <span class="func-name">menu_command</span>
+                        </div>
+                    </div>
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>/estadisticas — статистика пользователя</strong><br>
+                            Показывает имя, стрик, алмазы, описано картинок, ошибки<br>
+                            <span class="file-ref">bot/handlers.py</span> — <span class="func-name">estadisticas_command</span>
+                        </div>
+                    </div>
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>/perfil — профиль</strong><br>
+                            <span class="file-ref">bot/handlers.py</span> — <span class="func-name">perfil_command</span>
+                        </div>
+                    </div>
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>/instrucciones — инструкция (закрепляется)</strong><br>
+                            <span class="file-ref">bot/handlers.py</span> — <span class="func-name">instrucciones_command</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>🆘 Поддержка и админ-панель</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>Любое сообщение (не команда) → в поддержку</strong><br>
+                            Сохраняется в <span class="file-ref">data/users/support_requests.json</span><br>
+                            <span class="file-ref">core/profile.py</span> — <span class="func-name">save_support_request</span>
+                        </div>
+                    </div>
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>/responder — ответ админа пользователю</strong><br>
+                            <span class="file-ref">bot/handlers.py</span> — <span class="func-name">responder_command</span>
+                        </div>
+                    </div>
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>Ежедневный отчёт в 9:00</strong><br>
+                            <span class="file-ref">bot/handlers.py</span> — <span class="func-name">send_daily_report</span><br>
+                            <span class="file-ref">bot/main.py</span> — <span class="func-name">schedule_daily_report</span>
+                        </div>
+                    </div>
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>/cancelar_solicitud — отмена запроса</strong><br>
+                            <span class="file-ref">bot/handlers.py</span> — <span class="func-name">cancelar_solicitud_command</span>
+                        </div>
+                    </div>
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>/ayuda — помощь</strong><br>
+                            <span class="file-ref">bot/handlers.py</span> — <span class="func-name">ayuda_command</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>🖼️ Аватар Леры</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>Аватар отправляется при /start и /inicio</strong><br>
+                            <span class="file-ref">data/images/hola/avatar.jpg</span><br>
+                            <span class="file-ref">bot/handlers.py</span> — <span class="func-name">get_avatar</span>, <span class="func-name">inicio_command</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>💡 Идеи из встречи с Игорем Поюровым (LinguaLeo)</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>Геймификация + привычка</strong><br>
+                            У нас есть стрик, кубки, алмазы. Но главное — ежедневная сессия формирует привычку.
+                        </div>
+                    </div>
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>Безопасная среда для ошибок</strong><br>
+                            Лера тёплая, поддерживающая, не осуждает. Это помогает бороться со страхом и языковым барьером.
+                        </div>
+                    </div>
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>Соревнования (баттлы)</strong><br>
+                            У нас запланированы Турнир и Реванш — соревновательные механики для вовлечения.
+                        </div>
+                    </div>
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>Не перегружать</strong><br>
+                            1 картинка в день — оптимальная нагрузка для формирования привычки.
+                        </div>
+                    </div>
+                    <div class="realized-item">
+                        <span class="check">✅</span>
+                        <div class="content">
+                            <strong>Подписка → вовлечённость</strong><br>
+                            Триал 7 дней → 299 ₽/мес. Модель работает на увеличение времени использования.
+                        </div>
+                    </div>
+                    <div class="note blue">
+                        💡 <strong>Что можно добавить из встречи:</strong><br>
+                        — Звуки и анимации (Telegram поддерживает стикеры и GIF)<br>
+                        — Реферальная программа («Пригласи друга → получи 10 💎»)<br>
+                        — Персонализированные поздравления («Маша! Ты стала мастером Ser/Estar!»)
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <h3>📋 Что осталось сделать (приоритеты)</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="note red">
+                        🔴 <strong>КРИТИЧЕСКИ ВАЖНО (для MVP):</strong>
+                    </div>
+                    <ul>
+                        <li><strong>Карта ошибок</strong> — исправить проценты (убрать correct из промта)</li>
+                        <li><strong>OpenRouter</strong> — добавить перебор моделей</li>
+                        <li><strong>Таймаут</strong> — уменьшить с 10с до 3с</li>
+                        <li><strong>Порядок сообщений</strong> — приветствие → картинка → подсказки по кнопке → "Жду описания"</li>
+                    </ul>
+                    <div class="note orange mt-2">
+                        🟠 <strong>ВАЖНО (для удержания):</strong>
+                    </div>
+                    <ul>
+                        <li>Расписание Daily в 19:00 (APScheduler)</li>
+                        <li>Заморозка дня (15 💎) в 21:00 и 21:30</li>
+                        <li>Траты алмазов (заморозка, турнир)</li>
+                    </ul>
+                    <div class="note yellow mt-2">
+                        🟡 <strong>ПЛАНИРУЕТСЯ (для полноты):</strong>
+                    </div>
+                    <ul>
+                        <li>Реванш, Турнир, Симулятор DELE</li>
+                        <li>Карта коннекторов и карта правил</li>
+                        <li>Голосовые сообщения и кэширование</li>
+                        <li>Финал уровня (диплом + B1)</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Переключение основных вкладок
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.tab-content');
+    tabs.forEach(btn => {
+        btn.addEventListener('click', function() {
+            tabs.forEach(b => b.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+            const target = document.getElementById(this.dataset.tab);
+            if (target) target.classList.add('active');
+        });
+    });
+
+    // Переключение под-вкладок
+    const subTabs = document.querySelectorAll('.sub-tab-btn');
+    const subContents = document.querySelectorAll('.sub-tab-content');
+    subTabs.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const parent = this.closest('.tab-content');
+            const siblings = parent.querySelectorAll('.sub-tab-btn');
+            const contents = parent.querySelectorAll('.sub-tab-content');
+            siblings.forEach(b => b.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+            const target = document.getElementById(this.dataset.subtab);
+            if (target) target.classList.add('active');
+        });
+    });
+
+    // Сворачивание/разворачивание карточек
+    function toggleCard(headerEl) {
+        const body = headerEl.parentElement.querySelector('.card-body');
+        const toggle = headerEl.querySelector('.toggle');
+        if (!body) return;
+        body.classList.toggle('open');
+        toggle.textContent = body.classList.contains('open') ? '▼' : '▶';
+    }
+
+    // Открыть все карточки по умолчанию в технической реализации
+    document.querySelectorAll('#tab4 .card-body').forEach(el => el.classList.add('open'));
+    document.querySelectorAll('#tab4 .toggle').forEach(el => el.textContent = '▼');
+
+    // Открыть первую неделю по умолчанию
+    document.querySelector('#week1 .section').style.display = 'block';
+
+    // ---- ТУДУ-ЛИСТ ----
+    // Обработка чекбоксов
+    document.querySelectorAll('.todo-item input[type="checkbox"]').forEach(cb => {
+        cb.addEventListener('change', function() {
+            const item = this.closest('.todo-item');
+            if (this.checked) {
+                item.classList.add('done');
+            } else {
+                item.classList.remove('done');
+            }
+            // Пересортировка
+            const list = this.closest('.todo-list');
+            const items = Array.from(list.querySelectorAll('.todo-item'));
+            items.sort((a, b) => {
+                const aDone = a.classList.contains('done') ? 1 : 0;
+                const bDone = b.classList.contains('done') ? 1 : 0;
+                return aDone - bDone;
+            });
+            items.forEach(item => list.appendChild(item));
+        });
+    });
+
+    // Добавление задачи
+    function addTodo(button) {
+        const input = button.previousElementSibling;
+        const text = input.value.trim();
+        if (!text) return;
+
+        const week = input.dataset.week;
+        const list = document.getElementById(`todo-week${week}`);
+        if (!list) return;
+
+        const item = document.createElement('div');
+        item.className = 'todo-item';
+        item.innerHTML = `
+            <input type="checkbox">
+            <span class="todo-text">${text}</span>
+        `;
+
+        // Добавляем обработчик для нового чекбокса
+        const cb = item.querySelector('input[type="checkbox"]');
+        cb.addEventListener('change', function() {
+            const parent = this.closest('.todo-item');
+            if (this.checked) {
+                parent.classList.add('done');
+            } else {
+                parent.classList.remove('done');
+            }
+            const list = this.closest('.todo-list');
+            const items = Array.from(list.querySelectorAll('.todo-item'));
+            items.sort((a, b) => {
+                const aDone = a.classList.contains('done') ? 1 : 0;
+                const bDone = b.classList.contains('done') ? 1 : 0;
+                return aDone - bDone;
+            });
+            items.forEach(item => list.appendChild(item));
+        });
+
+        list.appendChild(item);
+        input.value = '';
+
+        // Автосортировка
+        const items = Array.from(list.querySelectorAll('.todo-item'));
+        items.sort((a, b) => {
+            const aDone = a.classList.contains('done') ? 1 : 0;
+            const bDone = b.classList.contains('done') ? 1 : 0;
+            return aDone - bDone;
+        });
+        items.forEach(item => list.appendChild(item));
+    }
+
+    // Добавление по Enter
+    document.querySelectorAll('.todo-add input').forEach(input => {
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addTodo(this.nextElementSibling);
+            }
+        });
+    });
+</script>
+</body>
+</html>

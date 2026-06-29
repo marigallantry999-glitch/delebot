@@ -1,0 +1,50 @@
+# Секреты
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+venv/
+env/
+.venv/
+myenv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Файлы на Mac
+.DS_Store
+Thumbs.db
+
+# Логи
+*.log
+*.tmp
+
+# Базы данных
+*.db
+*.sqlite
+*.sqlite3
+
+# GitHub
+*.zip
+*.tar
+*.gz
+*.rar
+
+# Игнорируем _plan.html (с подчёркиванием)
+_plan.html
+._*
